@@ -9,10 +9,13 @@ import WhatToAsk from "@/components/Landing/WhatToAsk";
 export default function Home() {
   return (
     <div className=" min-h-screen bg-background">
-      <Header/>
-      <Hero/>
-      <HowItWorks/>
-      
+      <Header />
+      <Hero />
+      <HowItWorks />
+      <WhatToAsk />
+      <PricingSection />
+      <CTA />
+      <Footer />
     </div>
   );
 }

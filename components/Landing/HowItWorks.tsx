@@ -72,7 +72,7 @@ const HowItWorks = () => {
       {/* Steps */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-15">
         {stepsCard.map((step, index) => (
-          <div className="relative bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl rounded-3xl p-8 border border-border/50 hover:border-primary/30 hover:-translate-y-5 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10">
+          <div key={index} className="relative bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl rounded-3xl p-8 border border-border/50 hover:border-primary/30 hover:-translate-y-5 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10">
             {/* Step Number */}
             <div className="absolute -top-4 left-8 w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center text-primary-foreground text-sm font-bold shadow-lg">
               {index + 1}
