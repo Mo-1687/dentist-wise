@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Patient {
+  id        String @id @default(cuid())
+  clerkId   String @unique
+  email     String @unique
+  firstName String?
+  lastName  String?
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  appointment Appointment[]
+
+  @@map("patients")
+}
+
+
+model Appointment {
+  id          String   @id @default(cuid())
+  userId      String
+  doctorId    String
+  date        DateTime
+  time        String
+  reason      String?
+  note        String?
+  duration    Int      @default(30)
+  status      AppointmentStatus @default(CONFIRMED)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user        Patient  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  doctor      Dentist  @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@map("appointments")
+
+}
+
+model Dentist {
+  id          String   @id @default(cuid())
+  name        String
+  specialty   String
+  phone       String
+  email       String   @unique
+  imageUrl    String
+  bio         String?
+  gender      Gender
+  isActive    Boolean   @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  appointment Appointment[]
+
+  @@map("dentists")
+
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+enum AppointmentStatus {
+  CONFIRMED
+  COMPLETED
+}
