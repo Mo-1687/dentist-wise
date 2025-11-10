@@ -5,8 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -14,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Patient {
+model User {
   id        String @id @default(cuid())
   clerkId   String @unique
   email     String @unique
@@ -25,7 +24,7 @@ model Patient {
   updatedAt DateTime @updatedAt
   appointment Appointment[]
 
-  @@map("patients")
+  @@map("users")
 }
 
 
@@ -43,14 +42,14 @@ model Appointment {
   updatedAt   DateTime @updatedAt
 
   // Relations
-  user        Patient  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  doctor      Dentist  @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  user        User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  doctor      Doctors  @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 
   @@map("appointments")
 
 }
 
-model Dentist {
+model Doctors {
   id          String   @id @default(cuid())
   name        String
   specialty   String
@@ -64,7 +63,7 @@ model Dentist {
   updatedAt   DateTime @updatedAt
   appointment Appointment[]
 
-  @@map("dentists")
+  @@map("doctors")
 
 }
 
