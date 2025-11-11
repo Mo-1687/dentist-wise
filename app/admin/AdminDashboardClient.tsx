@@ -1,11 +1,35 @@
 "use client";
+import AdminStats from "@/components/admin/AdminStats/AdminStats";
+import DoctorManagement from "@/components/admin/DoctorManagement/DoctorManagement";
 import Badge from "@/components/Badge/Badge";
 import Navbar from "@/components/Navbar/Navbar";
+import { useGetAppointments } from "@/hooks/use-appointments";
+import { useGetDoctors } from "@/hooks/use-doctors";
 import { useUser } from "@clerk/nextjs";
-import { SettingsIcon } from "lucide-react";
+import { LoaderIcon, SettingsIcon } from "lucide-react";
 
 const AdminDashboardClient = () => {
   const { user } = useUser();
+  const { data: doctors = [], isLoading: isLoadingDoctors } = useGetDoctors();
+  const { data: appointments = [], isLoading: isLoadingAppointments } =
+    useGetAppointments();
+
+  const stats = {
+    totalDoctors: doctors!.length,
+    activeDoctors: doctors!.filter((doc) => doc.isActive).length,
+    totalAppointments: appointments!.length,
+    completedAppointments: appointments!.filter(
+      (app) => app.status === "COMPLETED"
+    ).length,
+  };
+
+  if (isLoadingDoctors || isLoadingAppointments)
+    return (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <LoaderIcon />
+      </div>
+    );
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -36,6 +60,15 @@ const AdminDashboardClient = () => {
             </div>
           </div>
         </div>
+
+        {/* Admin Stats  */}
+        <AdminStats
+          totalDoctors={stats.totalDoctors}
+          activeDoctors={stats.activeDoctors}
+          totalAppointments={stats.totalAppointments}
+          completedAppointments={stats.completedAppointments}
+        />
+        <DoctorManagement />
       </div>
     </div>
   );
