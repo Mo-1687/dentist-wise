@@ -41,7 +41,7 @@ const HowItWorks = () => {
     },
   ];
   return (
-    <div className="relative z-10 py-32 px-6 overflow-hidden max-w-7xl mx-auto">
+    <div className="relative z-10 py-32 px-6 overflow-hidden max-w-7xl mx-auto" id="how-it-works">
       <div className="flex flex-col items-center justify-center space-y-5 text-center">
         <Badge icon={<ZapIcon size={10} />} text="Simple Process" />
 
