@@ -2,7 +2,6 @@
 
 import { vapi } from "@/lib/vapi";
 import { useUser } from "@clerk/nextjs";
-import { previousDay } from "date-fns";
 import { Loader } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
@@ -89,7 +88,9 @@ const VapiWidget = () => {
 
   if (!isLoaded)
     return (
-      <Loader className="absolute top-1/5 left-1/5 " width={40} height={40} />
+      <div className="relative w-full h-screen flex mt-10 justify-center">
+        <Loader className=" animate-spin" width={80} height={80} />
+      </div>
     );
 
   return (
