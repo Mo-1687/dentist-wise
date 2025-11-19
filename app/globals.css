@@ -197,3 +197,17 @@ body {
     cursor: pointer;
   }
 }
+
+@keyframes sound-wave {
+  0%,
+  100% {
+    height: 10%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+
+.animate-sound-wave{
+  animation: infinite 1.3s sound-wave ease-in-out;
+}

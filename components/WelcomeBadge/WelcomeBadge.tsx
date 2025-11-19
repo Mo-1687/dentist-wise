@@ -7,23 +7,20 @@ const WelcomeBadge = ({
   description,
   text,
   icon,
+  BadgeIcon = <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>,
 }: {
   heading: string;
   description: string;
   text: string;
   icon: React.ReactNode;
+  BadgeIcon: React.ReactNode;
 }) => {
   return (
     <>
       {/* ADMIN WELCOME SECTION */}
       <div className="mb-12 flex items-center justify-between bg-gradient-to-br from-primary/10 via-primary/5 to-background rounded-3xl p-8 border border-primary/20">
         <div className="space-y-4">
-          <Badge
-            icon={
-              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-            }
-            text={text}
-          />
+          <Badge icon={BadgeIcon } text={text} />
           <div>
             <h1 className="text-3xl lg:text-4xl font-bold mb-2 capitalize">
               {heading}
