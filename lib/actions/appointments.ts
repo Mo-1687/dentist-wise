@@ -55,7 +55,7 @@ export async function getUserAppointments() {
       },
       orderBy: [{ date: "asc" }, { time: "asc" }],
     });
-    return appointments.map(transformAppointment)
+    return appointments.map(transformAppointment);
   } catch (error) {
     toast.error("Error fetching user appointments:");
     throw new Error("Failed to fetch user appointments");
@@ -100,4 +100,80 @@ function transformAppointment(appointment: any) {
     doctorImageUrl: appointment.doctor.imageUrl || "",
     date: appointment.date.toISOString().split("T")[0],
   };
+}
+
+export async function getBookedTime(doctorId: string, date: string) {
+  try {
+    const appointments = await prisma.appointment.findMany({
+      where: {
+        doctorId,
+        date: new Date(date),
+        status: {
+          in: ["COMPLETED", "CONFIRMED"],
+        },
+      },
+      select: { time: true },
+    });
+    return appointments.map((appointment) => appointment.time);
+  } catch (error) {
+    throw new Error("Failed to fetch Booked time");
+  }
+}
+interface AppointmentsType {
+  doctorId: string;
+  date: string;
+  time: string;
+  reason?: string;
+}
+export async function bookAppointment(input: AppointmentsType) {
+  try {
+    const { userId } = await auth();
+    if (!userId) {
+      toast.error("You must login first! ");
+      throw new Error("You must login first! ");
+    }
+    if (!input.date || !input.doctorId || !input.time) {
+      toast.error("Doctor, date, and time are required");
+      throw new Error("Doctor, date, and time are required");
+    }
+
+    const user = await prisma.user.findUnique({ where: { clerkId: userId } });
+
+    if (!user) {
+      toast.error("User not found!");
+      throw new Error("User not found!");
+    }
+
+    const appointments = await prisma.appointment.create({
+      data: {
+        date: new Date(input.date),
+        time: input.time,
+        reason: input.reason || "General Consultation",
+        doctorId: input.doctorId,
+        userId: user.id,
+        status: "CONFIRMED",
+      },
+      
+      include: {
+        user: {
+          select: {
+            firstName: true,
+            lastName: true,
+            email: true,
+          },
+        },
+        doctor: {
+          select: {
+            name: true,
+            imageUrl: true,
+          },
+        },
+      },
+    });
+
+    return transformAppointment(appointments);
+  } catch (error) {
+    toast.error("Failed to book an appointment");
+    throw new Error("Failed to book an appointment");
+  }
 }

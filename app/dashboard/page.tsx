@@ -1,10 +1,11 @@
 import MainAction from "@/components/Dashboard/MainAction";
+import NextAppointment from "@/components/Dashboard/NextAppointment";
+import OverView from "@/components/Dashboard/OverView";
 import Navbar from "@/components/Navbar/Navbar";
 import WelcomeBadge from "@/components/WelcomeBadge/WelcomeBadge";
 import Image from "next/image";
 
 const page = () => {
-  
   const hour = new Date().getHours();
   return (
     <div>
@@ -30,6 +31,10 @@ const page = () => {
           }
         />
         <MainAction />
+        <div className="grid lg:grid-cols-3 gap-6">
+          <OverView />
+          <NextAppointment />
+        </div>
       </div>
     </div>
   );

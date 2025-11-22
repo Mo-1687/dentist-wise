@@ -1,7 +1,12 @@
 import { getUserAppointmentsStats } from "@/lib/actions/appointments";
 import { currentUser } from "@clerk/nextjs/server";
-import React from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 import { BrainIcon, MessageSquareIcon } from "lucide-react";
 import { format } from "date-fns";
 import Link from "next/link";
