@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     "Get instant answers to your dental questions with DentWise, the AI-powered dental assistant designed to provide accurate and reliable information for all your oral health needs.",
 };
 
+// For All Pages that use auth()
+export const dynamic = 'force-static';
+
 export default function RootLayout({
   children,
 }: Readonly<{
