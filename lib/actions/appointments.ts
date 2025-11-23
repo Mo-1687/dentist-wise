@@ -3,9 +3,7 @@
 import { auth } from "@clerk/nextjs/server";
 import prisma from "../prisma";
 import { toast } from "react-toastify";
-import { promises } from "dns";
-import { time } from "console";
-import { AppointmentStatus } from "../generated/prisma/enums";
+import { AppointmentStatus } from "@prisma/client";
 
 export async function getAppointments() {
   try {
