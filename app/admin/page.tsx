@@ -4,12 +4,7 @@ import AdminDashboardClient from "./AdminDashboardClient";
 import Navbar from "@/components/Navbar/Navbar";
 
 const AdminPage = async () => {
-  const user = await currentUser();
-  if (!user) redirect("/");
-  const adminEmail = process.env.ADMAN_EMAIL;
-  if (!adminEmail || user?.emailAddresses[0].emailAddress !== adminEmail) {
-    redirect("/dashboard");
-  }
+ 
   return (
     <div>
       <Navbar />
