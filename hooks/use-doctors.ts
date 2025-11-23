@@ -45,6 +45,7 @@ export function useUpdateDoctors() {
       toast.success("Doctor data updated successfully");
       // Refetch Data
       queryClient.invalidateQueries({ queryKey: ["getDoctors"] });
+      queryClient.invalidateQueries({ queryKey: ["getAvailableDoctors"] });
     },
     onError: (error: any) => {
       if (error?.code === "P2002")
