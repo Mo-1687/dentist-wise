@@ -8,6 +8,7 @@ import { useGetAppointments } from "@/hooks/use-appointments";
 import { useGetDoctors } from "@/hooks/use-doctors";
 import { useUser } from "@clerk/nextjs";
 import { LoaderIcon, SettingsIcon } from "lucide-react";
+import RecentAppointments from "./RecentAppointments";
 
 const AdminDashboardClient = () => {
   const { user } = useUser();
@@ -27,7 +28,7 @@ const AdminDashboardClient = () => {
   if (isLoadingDoctors || isLoadingAppointments)
     return (
       <div className="absolute inset-0 flex items-center justify-center">
-        <LoaderIcon />
+        <LoaderIcon className="animate-spin text-4xl" />
       </div>
     );
 
@@ -53,6 +54,7 @@ const AdminDashboardClient = () => {
           completedAppointments={stats.completedAppointments}
         />
         <DoctorManagement />
+        <RecentAppointments />
       </div>
     </div>
   );

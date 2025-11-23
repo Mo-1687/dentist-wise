@@ -1,4 +1,3 @@
-import { SettingsIcon } from "lucide-react";
 import React from "react";
 import Badge from "../Badge/Badge";
 
@@ -13,7 +12,7 @@ const WelcomeBadge = ({
   description: string;
   text: string;
   icon: React.ReactNode;
-  BadgeIcon: React.ReactNode;
+  BadgeIcon?: React.ReactNode;
 }) => {
   return (
     <>

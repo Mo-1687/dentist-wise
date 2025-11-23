@@ -5,6 +5,7 @@ import prisma from "../prisma";
 import { toast } from "react-toastify";
 import { promises } from "dns";
 import { time } from "console";
+import { AppointmentStatus } from "../generated/prisma/enums";
 
 export async function getAppointments() {
   try {
@@ -27,7 +28,7 @@ export async function getAppointments() {
       orderBy: { createdAt: "desc" },
     });
 
-    return appointments;
+    return appointments.map(transformAppointment);
   } catch (error) {
     console.log("Failed to get Appointments", error);
     throw new Error("Failed to get Appointments");
@@ -153,7 +154,7 @@ export async function bookAppointment(input: AppointmentsType) {
         userId: user.id,
         status: "CONFIRMED",
       },
-      
+
       include: {
         user: {
           select: {
@@ -175,5 +176,22 @@ export async function bookAppointment(input: AppointmentsType) {
   } catch (error) {
     toast.error("Failed to book an appointment");
     throw new Error("Failed to book an appointment");
+  }
+}
+
+export async function updateAppointmentStatus(input: {
+  id: string;
+  status: AppointmentStatus;
+}) {
+  try {
+    const appointment = await prisma.appointment.update({
+      where: { id: input.id },
+      data: { status: input.status },
+    });
+
+    return appointment;
+  } catch (error) {
+    console.error("Error updating appointment:", error);
+    throw new Error("Failed to update appointment");
   }
 }

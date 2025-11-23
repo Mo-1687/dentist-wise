@@ -1,13 +1,13 @@
 "use client";
-import { SignInButton, SignUpButton } from "@clerk/nextjs";
-import Link from "next/link";
+import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import Logo from "../Logo/Logo";
-import { text } from "stream/consumers";
 
 const Header = () => {
+  const { user } = useUser();
+
   const navItems = [
     {
       text: "How it Works",
@@ -49,12 +49,31 @@ const Header = () => {
           ))}
         </div>
         <div className="flex flex-1 lg:flex-initial justify-end  gap-3">
-          <SignInButton mode="modal">
-            <Button variant={"ghost"}>Sign In</Button>
-          </SignInButton>
-          <SignUpButton mode="modal">
-            <Button>Sign Up</Button>
-          </SignUpButton>
+          {user ? (
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
+                <div className="hidden lg:flex flex-col items-end">
+                  <span className="text-sm font-medium text-foreground">
+                    {user?.firstName} {user?.lastName}
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    {user?.emailAddresses?.[0]?.emailAddress}
+                  </span>
+                </div>
+
+                <UserButton />
+              </div>
+            </div>
+          ) : (
+            <>
+              <SignInButton mode="modal">
+                <Button variant={"ghost"}>Sign In</Button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <Button>Sign Up</Button>
+              </SignUpButton>
+            </>
+          )}
         </div>
         <Button onClick={toggleMenu} className="ms-5 lg:hidden">
           <Menu />
