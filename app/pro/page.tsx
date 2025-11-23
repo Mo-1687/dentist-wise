@@ -5,6 +5,8 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import { CrownIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 const ProPage = async () => {
   const user = await currentUser();
   const { has } = await auth();

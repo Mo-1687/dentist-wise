@@ -14,6 +14,8 @@ import { format } from "date-fns";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
+export const dynamic = 'force-dynamic';
+
 function AppointmentsPage() {
   // state management for the booking process - this could be done with something like Zustand for larger apps
   const [selectedDentistId, setSelectedDentistId] = useState<string | null>(
