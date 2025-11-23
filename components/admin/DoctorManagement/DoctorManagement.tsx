@@ -19,7 +19,7 @@ import Image from "next/image";
 import { useState } from "react";
 import AddDoctorDialog from "../AddDoctorDialog/AddDoctorDialog";
 import EditDoctorDialog from "../EditDoctorDialog/EditDoctorDialog";
-import { Doctors } from "@/lib/generated/prisma/client";
+import { Doctors } from "@prisma/client";
 
 const DoctorManagement = () => {
   const { data: doctors = [] } = useGetDoctors();

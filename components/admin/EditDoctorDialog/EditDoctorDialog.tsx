@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useUpdateDoctors } from "@/hooks/use-doctors";
-import { Doctors, Gender } from "@/lib/generated/prisma/client";
+import { Doctors, Gender } from "@prisma/client";
 import { Loader } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
