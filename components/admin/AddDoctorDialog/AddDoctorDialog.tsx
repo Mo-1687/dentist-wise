@@ -17,10 +17,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useCreateDoctors } from "@/hooks/use-doctors";
-import { Gender } from "@/lib/generated/prisma/enums";
+import { Gender } from "@prisma/client";
 
 import { Loader } from "lucide-react";
-import { ReactElement, useState } from "react";
+import {  useState } from "react";
 import { toast } from "react-toastify";
 interface AddDoctorDialogProps {
   isOpen: boolean;
