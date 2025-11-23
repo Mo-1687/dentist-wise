@@ -4,7 +4,7 @@ import VapiWidget from "@/components/voice/VapiWidget";
 import WelcomeBadge from "@/components/WelcomeBadge/WelcomeBadge";
 import { auth } from "@clerk/nextjs/server";
 import { MicIcon } from "lucide-react";
-import React from "react";
+export const dynamic = 'force-dynamic';
 
 const page = async () => {
   const { has } = await auth();
