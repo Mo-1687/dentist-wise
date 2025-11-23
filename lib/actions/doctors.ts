@@ -1,9 +1,9 @@
 "use server";
 import { toast } from "react-toastify";
-import { Gender } from "../generated/prisma/enums";
 import prisma from "../prisma";
 import { generateAvatar } from "../utils";
 import { revalidatePath } from "next/cache";
+import { Gender } from "@prisma/client";
 
 export async function getDoctors() {
   try {
