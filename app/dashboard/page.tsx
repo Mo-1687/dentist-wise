@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import WelcomeBadge from "@/components/WelcomeBadge/WelcomeBadge";
 import Image from "next/image";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 const page = () => {
   const hour = new Date().getHours();

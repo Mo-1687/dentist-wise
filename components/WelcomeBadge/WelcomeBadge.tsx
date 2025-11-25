@@ -21,7 +21,7 @@ const WelcomeBadge = ({
         <div className="space-y-4">
           <Badge icon={BadgeIcon } text={text} />
           <div>
-            <h1 className="text-3xl lg:text-4xl font-bold mb-2 capitalize">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 capitalize">
               {heading}
             </h1>
             <p className="text-muted-foreground text-sm md:text-base">

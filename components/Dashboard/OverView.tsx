@@ -13,8 +13,8 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 
 const OverView = async () => {
-  const appointmentStats = await getUserAppointmentsStats();
   const user = await currentUser();
+  const appointmentStats = await getUserAppointmentsStats();
 
   return (
     <Card className="lg:col-span-2">

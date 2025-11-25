@@ -84,6 +84,7 @@ export async function getUserAppointmentsStats() {
       completedAppointments: completedCount,
     };
   } catch (error) {
+    console.log(error);
     throw new Error("Something went wrong");
   }
 }
@@ -189,7 +190,6 @@ export async function updateAppointmentStatus(input: {
 
     return appointment;
   } catch (error) {
-    console.error("Error updating appointment:", error);
     throw new Error("Failed to update appointment");
   }
 }

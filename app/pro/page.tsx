@@ -11,7 +11,6 @@ const ProPage = async () => {
   const user = await currentUser();
   const { has } = await auth();
 
-  if (!user) redirect("/");
 
   //   Check User Plan
   const isInProSub = has({ plan: "ai_pro" }) ? "You are in a" : "Unlock";

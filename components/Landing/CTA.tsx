@@ -1,11 +1,15 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { MicIcon, CalendarIcon } from "lucide-react";
+import { MicIcon, CalendarIcon, Calendar } from "lucide-react";
 import Badge from "../Badge/Badge";
+import { SignUpButton } from "@clerk/nextjs";
 
 function CTA() {
   return (
-    <section className="relative py-20 px-6 overflow-hidden bg-gradient-to-br from-muted/10 via-background to-muted/5" id="contact-us">
+    <section
+      className="relative py-20 px-6 overflow-hidden bg-gradient-to-br from-muted/10 via-background to-muted/5"
+      id="contact-us"
+    >
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.03),transparent_70%)]"></div>
 
@@ -39,21 +43,22 @@ function CTA() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Button
-                size="lg"
-                className="px-6 py-3 font-semibold bg-gradient-to-r from-primary to-primary/90 hover:from-primary/95 hover:to-primary/85 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
-              >
-                <MicIcon className="mr-2 h-4 w-4" />
-                Start free chat
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="px-6 py-3 font-semibold border border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 rounded-xl"
-              >
-                <CalendarIcon className="mr-2 h-4 w-4" />
-                Book appointment
-              </Button>
+              <SignUpButton mode="modal" fallbackRedirectUrl="/pro">
+                <Button size={"lg"} className="flex items-center gap-2">
+                  <MicIcon />
+                  Try voice agent
+                </Button>
+              </SignUpButton>
+              <SignUpButton mode="modal" fallbackRedirectUrl="/appointments">
+                <Button
+                  variant={"outline"}
+                  size={"lg"}
+                  className="flex items-center gap-2"
+                >
+                  <Calendar size={5} />
+                  Book an appointment
+                </Button>
+              </SignUpButton>
             </div>
           </div>
 

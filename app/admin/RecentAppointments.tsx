@@ -95,7 +95,7 @@ function RecentAppointments() {
                       <div className="font-medium">
                         {appointment.patientName}
                       </div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-xs md:text-sm text-muted-foreground">
                         {appointment.patientEmail}
                       </div>
                     </div>

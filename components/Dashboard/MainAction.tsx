@@ -57,7 +57,7 @@ const MainAction = () => {
     },
   ];
   return (
-    <div className="grid md:grid-cols-2 gap-8 mb-12">
+    <div className="grid lg:grid-cols-2 gap-8 mb-12">
       {/* AI Voice Assistant */}
       {FeatureCards.map((card, index) => (
         <Card

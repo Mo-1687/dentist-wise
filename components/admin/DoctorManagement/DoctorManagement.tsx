@@ -41,9 +41,9 @@ const DoctorManagement = () => {
   return (
     <>
       <Card className="mb-12 relative">
-        <CardHeader className="flex items-center justify-between">
+        <CardHeader className="flex flex-col lg:flex-row lg:items-center gap-3 justify-between">
           <div>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex  items-center gap-2">
               <StethoscopeIcon className="size-5 text-primary" />
               Doctors Management
             </CardTitle>
@@ -66,7 +66,7 @@ const DoctorManagement = () => {
             {doctors.map((doctor) => (
               <div
                 key={doctor.id}
-                className="flex items-center justify-between p-4 bg-muted/30 rounded-xl border border-border/50"
+                className="flex flex-col md:flex-row gap-5 md:items-center justify-between p-4 bg-muted/30 rounded-xl border border-border/50"
               >
                 <div className="flex items-center gap-4">
                   <Image
@@ -87,7 +87,7 @@ const DoctorManagement = () => {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-4 mt-1">
+                    <div className="flex  flex-col md:flex-row  gap-4 mt-1">
                       <div className="flex items-center gap-1 text-xs text-muted-foreground">
                         <MailIcon className="h-3 w-3" />
                         {doctor.email}

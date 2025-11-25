@@ -18,6 +18,7 @@ function PricingSection() {
         "Appointment reminders",
       ],
       popular: false,
+      link: "/pro",
     },
     {
       name: "AI Basic",
@@ -34,6 +35,7 @@ function PricingSection() {
         "Call history & recordings",
       ],
       popular: true,
+      link: "/pro",
     },
     {
       name: "AI Pro",
@@ -50,11 +52,15 @@ function PricingSection() {
         "Detailed health reports",
       ],
       popular: false,
+      link: "/pro",
     },
   ];
 
   return (
-    <section id="pricing" className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-background via-muted/3 to-background">
+    <section
+      id="pricing"
+      className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-background via-muted/3 to-background"
+    >
       {/* Grid Background Pattern */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/5 to-primary/5">
@@ -101,7 +107,9 @@ function PricingSection() {
                 </div>
               )}
 
-              <div className={`relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-3xl p-8 ${plan.popular ? "scale-105 border-2 border-primary/30   hover:border-primary/50" : "border border-border/50 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10"} transition-all duration-500 shadow-xl  hover:shadow-2xl hover:shadow-primary/20`}>
+              <div
+                className={`relative bg-gradient-to-br from-card/95 to-card/70 backdrop-blur-xl rounded-3xl p-8 ${plan.popular ? "scale-105 border-2 border-primary/30   hover:border-primary/50" : "border border-border/50 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10"} transition-all duration-500 shadow-xl  hover:shadow-2xl hover:shadow-primary/20`}
+              >
                 <div className="space-y-6">
                   <div className="space-y-3">
                     <h3 className="text-2xl font-bold">AI Basic</h3>

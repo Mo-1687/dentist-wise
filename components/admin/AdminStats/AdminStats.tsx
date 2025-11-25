@@ -33,7 +33,7 @@ const AdminStats = ({
   ];
 
   return (
-    <div className="grid md:grid-cols-4 gap-6 mb-12">
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
       {statsCard.map((item) => (
         <Card
           className="border-2 hover:scale-105 hover:border-primary/30 transition-all duration-300"

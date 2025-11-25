@@ -7,7 +7,7 @@ import WelcomeBadge from "@/components/WelcomeBadge/WelcomeBadge";
 import { useGetAppointments } from "@/hooks/use-appointments";
 import { useGetDoctors } from "@/hooks/use-doctors";
 import { useUser } from "@clerk/nextjs";
-import { LoaderIcon, SettingsIcon } from "lucide-react";
+import { Loader, LoaderIcon, SettingsIcon } from "lucide-react";
 import RecentAppointments from "./RecentAppointments";
 
 const AdminDashboardClient = () => {
@@ -24,13 +24,6 @@ const AdminDashboardClient = () => {
       (app) => app.status === "COMPLETED"
     ).length,
   };
-
-  if (isLoadingDoctors || isLoadingAppointments)
-    return (
-      <div className="absolute inset-0 flex items-center justify-center">
-        <LoaderIcon className="animate-spin text-4xl" />
-      </div>
-    );
 
   return (
     <div className="min-h-screen bg-background">

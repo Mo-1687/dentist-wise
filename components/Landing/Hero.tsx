@@ -27,7 +27,7 @@ const Hero = () => {
     },
   ];
   return (
-    <div className="relative w-full min-h-screen overflow-hidden flex items-center py-20 lg:py-5">
+    <div className="relative max-w-7xl mx-auto min-h-screen overflow-hidden flex items-center py-20 lg:py-5">
       {/* GRID BG  */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/5 to-primary/5">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-20"></div>
@@ -77,13 +77,13 @@ const Hero = () => {
 
               {/* CTA BUTTONS  */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <SignUpButton mode="modal">
+                <SignUpButton mode="modal" fallbackRedirectUrl="/pro">
                   <Button size={"lg"} className="flex items-center gap-2">
                     <MicIcon />
                     Try voice agent
                   </Button>
                 </SignUpButton>
-                <SignUpButton mode="modal">
+                <SignUpButton mode="modal" fallbackRedirectUrl="/appointments">
                   <Button
                     variant={"outline"}
                     size={"lg"}
@@ -138,7 +138,7 @@ const Hero = () => {
             {/* Left Content  */}
 
             {/* Right Content  */}
-            <div className="relative lg:pl-8">
+            <div className="relative flex flex-col items-center justify-center">
               {/* GRADIENT ORBS */}
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl rotate-45 blur-xl"></div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary/15 to-primary/5 rounded-full blur-2xl"></div>
@@ -148,7 +148,7 @@ const Hero = () => {
                 alt="DentWise AI"
                 width={500}
                 height={500}
-                className="w-full object-cover"
+                className="max-w-4xs object-cover"
               />
             </div>
             {/* Right Content  */}

@@ -5,13 +5,14 @@ import Hero from "@/components/Landing/Hero";
 import HowItWorks from "@/components/Landing/HowItWorks";
 import PricingSection from "@/components/Landing/PricingSection";
 import WhatToAsk from "@/components/Landing/WhatToAsk";
+import Navbar from "@/components/Navbar/Navbar";
 import { syncUser } from "@/lib/actions/users";
 
 export default async function Home() {
   await syncUser();
   return (
     <div className=" min-h-screen bg-background">
-      <Header />
+      <Navbar />
       <Hero />
       <HowItWorks />
       <WhatToAsk />

@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 };
 
 // For All Pages that use auth()
-export const dynamic = 'force-static';
 
 export default function RootLayout({
   children,
