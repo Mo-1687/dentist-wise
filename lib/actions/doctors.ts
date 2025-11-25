@@ -19,7 +19,6 @@ export async function getDoctors() {
       appointmentCount: doctor._count.appointment,
     }));
   } catch (error) {
-    console.log("Failed to get doctors", error);
     throw new Error("Failed to get doctors");
   }
 }
