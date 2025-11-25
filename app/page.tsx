@@ -8,7 +8,6 @@ import Navbar from "@/components/Navbar/Navbar";
 import { syncUser } from "@/lib/actions/users";
 
 export default async function Home() {
-  await syncUser();
   return (
     <div className=" min-h-screen bg-background">
       <Navbar />
